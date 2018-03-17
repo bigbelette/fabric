@@ -45,7 +45,7 @@ type SmartContract struct {
 type Ticket struct {
 	Organisator string `json:"organisator"`
 	Event       string `json:"event"`
-	Date        string `json:"dater"`
+	Date        string `json:"date"`
 	Owner       string `json:"owner"`
 }
 
