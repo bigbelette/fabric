@@ -41,11 +41,11 @@ type SmartContract struct {
 }
 
 // Define the authenticationAttempt structure, with 4 properties.  Structure tags are used by encoding/json library
-type authenticationAttempt struct {
-	InvestigatorID      string `json:"investigatorID"`
+type AuthenticationAttempt struct {
+	Investigator        string `json:"investigator"`
 	Date                string `json:"date"`
 	Result              string `json:"result"`
-	AuthenticatedPerson string `json:"authenticatedPerson"`
+	AuthenticatedPerson string `json:"authenticatedperson"`
 }
 
 /*
@@ -92,7 +92,7 @@ func (s *SmartContract) createAuth(APIstub shim.ChaincodeStubInterface, args []s
 		return shim.Error("Incorrect number of arguments. Expecting 5")
 	}
 
-	var authenticationAttempt = Auth{InvestigatorID: args[1], Date: args[2], Result: args[3], AuthenticatedPerson: args[4]}
+	var authenticationAttempt = AuthenticationAttempt{Investigator: args[1], Date: args[2], Result: args[3], AuthenticatedPerson: args[4]}
 
 	authAsBytes, _ := json.Marshal(authenticationAttempt)
 	APIstub.PutState(args[0], authAsBytes)
